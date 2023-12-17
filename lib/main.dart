@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         Routes.welcome: (context) => WelcomeScreen(),
         Routes.login: (context) => LoginScreen(), // Ajoutez l'écran de connexion
         Routes.signup: (context) => SignupScreen(), // Ajoutez l'écran d'inscription
+       // Routes.geolocalisation: (context) => GeolocalisationScreen() // Ajoutez l'écran
       },
     );
   }
