@@ -1,49 +1,23 @@
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
+//
+//
+//   class GeoLocationService {
+//   Future<Map<String, dynamic>> getLocation() async {
+//   try {
+//   final response = await http.get(Uri.parse('http://api.ipstack.com/check?access_key=9c141956481f14d9ee82fc63fa0d56dc&language=fr'));
+//
+//   if (response.statusCode == 200) {
+//   return json.decode(response.body);
+//   } else {
+//   print('Error: ${response.statusCode}');
+//   return {'error': 'Unable to fetch location data'};
+//   }
+//   } catch (e) {
+//   print('Error: $e');
+//   return {'error': 'An error occurred while fetching location data'};
+//   }
+//   }
+//   }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
 
-class _MyAppState extends State<MyApp> {
-  String location = '';
-
-  @override
-  void initState() {
-    super.initState();
-    getLocation();
-  }
-
-  Future<void> getLocation() async {
-    try {
-      final response = await http.get(Uri.parse('http://api.ipstack.com/check?access_key=YOUR_ACCESS_KEY'));
-
-      if (response.statusCode == 200) {
-        final Map<String, dynamic> data = json.decode(response.body);
-        setState(() {
-          location = 'City: ${data['city']}, Country: ${data['country_name']}';
-        });
-      } else {
-        print('Error: ${response.statusCode}');
-      }
-    } catch (e) {
-      print('Error: $e');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('IP Geolocation Flutter'),
-        ),
-        body: Center(
-          child: Text(location),
-        ),
-      ),
-    );
-  }
-}
