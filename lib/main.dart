@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/routes.dart';
+import 'package:weather_app/screens/ajouter_un_lieu.dart';
 import 'package:weather_app/screens/geolocalisation_screen.dart';
 import 'package:weather_app/screens/welcome_screen.dart';
 import 'package:weather_app/screens/login_screen.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         Routes.welcome: (context) => WelcomeScreen(),
         Routes.login: (context) => LoginScreen(), // Ajoutez l'écran de connexion
         Routes.signup: (context) => SignupScreen(), // Ajoutez l'écran d'inscription
-        Routes.geolocalisation: (context) => GeolocalisationScreen() // Ajoutez l'écran
+        Routes.geolocalisation: (context) => GeolocalisationScreen(), // Ajoutez l'écran
+        Routes.ajouterunlieu: (context) => AjouterUnLieuScreen() // Ajoutez l'écran
       },
     );
   }

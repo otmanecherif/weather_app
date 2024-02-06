@@ -111,7 +111,9 @@ class _GeolocalisationScreenState extends State<GeolocalisationScreen> {
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:weather_app/routes.dart';
 import 'package:http/http.dart' as http;
+
 
 class GeolocalisationScreen extends StatefulWidget {
   @override
@@ -149,6 +151,9 @@ class _GeolocalisationScreenState extends State<GeolocalisationScreen> {
     }
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -156,8 +161,77 @@ class _GeolocalisationScreenState extends State<GeolocalisationScreen> {
         title: Text('Geolocation with ip-api.com'),
       ),
       body: Center(
+        child: Container(
+            height: 300,
+            width: 265,
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(217,217,217,217),
+              border: Border.all(
+                width: 1,
+                color: Colors.grey.withOpacity(0.5),
+              ),
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5), // Couleur de l'ombre
+                  spreadRadius: 5, // Rayon de diffusion de l'ombre
+                  blurRadius: 7, // Flou de l'ombre
+                  offset: Offset(0, 3), // Décalage de l'ombre
+                )
+              ],
+            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Activer la géolocalisation',
+                  style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                ),
+                ),
+                SizedBox(height: 10),
+                Image(
+                    image: AssetImage('assets/geolocalisation.png'), // Charger l'image à partir des assets
+                    fit: BoxFit.fitHeight), // Mode d'ajustement de l'image dans le conteneur),
+                SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                // Naviguer vers l'écran de connexion
+                Navigator.pushNamed(context, Routes.ajouterunlieu);
+              },
+              child: Text('Autoriser'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromRGBO(0,74,172,82), // Définir la couleur de fond en rouge
+                minimumSize: Size(200, 40),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15), // Définir le rayon des angles
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Naviguer vers l'écran d'inscription
+                Navigator.pushNamed(context, Routes.ajouterunlieu);
+              },
+              child: Text('Passer'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromRGBO(0,74,172,82),
+                  minimumSize: Size(200, 40),// Définir la couleur de fond en rouge
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15), // Définir le rayon des angles
+                  ),
+
+              ),
+            ),
+              ],
+          ),
+        ),
+        ),
+
+      /*Center(
         child: Text(locationInfo),
-      ),
+      ),*/
     );
   }
 }
