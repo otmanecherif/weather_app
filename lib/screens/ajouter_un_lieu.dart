@@ -22,6 +22,7 @@ class AjouterUnLieuScreen extends StatefulWidget {
 class _AjouterUnLieuScreenState extends State<AjouterUnLieuScreen> {
   String locationInfo = '';
   String selectedPage = '';
+  String city='';
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -29,18 +30,21 @@ class _AjouterUnLieuScreenState extends State<AjouterUnLieuScreen> {
     super.initState();
     if (widget.geoloc) {
       fetchLocation();
+      addGeolocwidget(context);
     }
   }
 
   Future<void> fetchLocation() async {
     try {
-      final response = await http.get(Uri.parse('http://ip-api.com/json/'));
+      final response = await http.get(Uri.parse('https://ipinfo.io/json'));
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> result = json.decode(response.body);
         setState(() {
           locationInfo =
-          'City: ${result['city']}, Country: ${result['country']}, CodePostale: ${result['zip']}, Region: ${result['regionName']}, Pays: ${result['country']}';
+          'City: ${result['city']}, Pays: ${result['country']}, CodePostale: ${result['postal']}, Region: ${result['region']}';
+          city='${result['city']}';
+          print(city);
         });
       } else {
         setState(() {
@@ -53,6 +57,48 @@ class _AjouterUnLieuScreenState extends State<AjouterUnLieuScreen> {
         locationInfo = 'Error: An error occurred while fetching location data';
       });
     }
+  }
+
+
+  Widget addGeolocwidget(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        // Action à effectuer lorsque le conteneur est tapé ou pressé
+        // Naviguer vers l'écran de votre choix
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WelcomeScreen(),
+          ),
+        );
+      },
+      child: Container(
+        height: 50,
+        width: 350,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(189, 208, 233, 100),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20), // Ajoutez un Padding à gauche de l'icône
+                child: Icon(Icons.my_location, color: Color.fromRGBO(0, 123, 229, 1.0)),
+              ),
+              SizedBox(width: 30), // Espace entre l'icône et le texte
+        Text(
+          'Ma position : $city',
+          style: TextStyle(
+            color: Color.fromRGBO(74, 73, 73, 1.0),
+            fontSize: 16,
+
+            // Ajoutez d'autres styles de texte selon vos préférences
+          ),
+        ),
+            ],
+      ),
+    ),
+    );
   }
 
   @override
@@ -161,7 +207,7 @@ class _AjouterUnLieuScreenState extends State<AjouterUnLieuScreen> {
                 );
               },
             ),
-            SizedBox(height: 400),
+            SizedBox(height: 450),
             ListTile(
               leading: const Icon(Icons.exit_to_app_rounded,color: Colors.white,),
               title: const Text('Se Déconnecter',
@@ -186,20 +232,32 @@ class _AjouterUnLieuScreenState extends State<AjouterUnLieuScreen> {
       ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 20.0,bottom:10.0),
             // Ajuster le padding vertical
             child: Title(
               color: Colors.grey,
               child: Text(
                 'Ajouter un lieu', // Titre rapproché
-                style: TextStyle(fontSize: 30),
+                style: TextStyle(fontSize: 20),
               ),
             ),
           ),
-          Container(
+            InkWell(
+            onTap: () {
+            // Action à effectuer lorsque le conteneur est tapé ou pressé
+            // Naviguer vers l'écran de votre choix
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WelcomeScreen(),
+                ),
+              );
+            },
+            child:
+            Container(
             height: 50,
             width: 265,
             decoration: BoxDecoration(
@@ -220,6 +278,9 @@ class _AjouterUnLieuScreenState extends State<AjouterUnLieuScreen> {
             ),
             child: Icon(Icons.add, color: Color.fromRGBO(74, 73, 73, 43.0)),
           ),
+            ),
+          SizedBox(height: 50),
+          addGeolocwidget(context),
           Text(
             locationInfo,
             textAlign: TextAlign.center,
