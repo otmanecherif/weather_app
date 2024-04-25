@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "411657349926",
+    "project_id": "weather-4972b",
+    "storage_bucket": "weather-4972b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411657349926:android:7eb6ed3f7dc8d36a132fe7",
+        "android_client_info": {
+          "package_name": "my.adventurous.weather"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0QVFwcAA3POFr5hUNnPq58ApBWsTvczE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

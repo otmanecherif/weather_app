@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAq9zbBZRtLglh0ACeKBpMzDCEkqQdObwQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>411657349926</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>my.adventurous.weather</string>
+	<key>PROJECT_ID</key>
+	<string>weather-4972b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>weather-4972b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:411657349926:ios:f252d61cb5149ea4132fe7</string>
+	<key>DATABASE_URL</key>
+	<string>https://weather-4972b-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
